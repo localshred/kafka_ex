@@ -13,6 +13,10 @@ defmodule KafkaEx.Server do
 
   def start_link(args, name \\ __MODULE__)
 
+  def start_link([args, :no_name], _name) do
+    GenServer.start_link(__MODULE__, [args])
+  end
+
   def start_link(args, :no_name) do
     GenServer.start_link(__MODULE__, [args])
   end
